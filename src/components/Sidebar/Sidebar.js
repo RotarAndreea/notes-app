@@ -8,6 +8,7 @@ const Sidebar = (props) => {
               note.id === props.currentNote.id ? "selected-note" : ""
           }`}
           onClick={() => props.setCurrentNoteId(note.id)}
+
       >
         <h4 className='text-snippet' >{(note.body).split('\n')[0]} </h4>
       </div>
@@ -15,7 +16,7 @@ const Sidebar = (props) => {
   ))
   return (
     <div className='pane sidebar'>
-      <div className='sidebat--header'>
+      <div className='sidebar--header'>
           <h3>Notes</h3>
           <button className='new-note' onClick={props.newNote}>+</button>
       </div>

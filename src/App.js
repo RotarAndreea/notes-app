@@ -25,6 +25,8 @@ React.useEffect(()=>{
     setCurrentNoteId(newNote.id)
   }
 
+  //this does not rearrange the notes
+  /*
   function updateNote(text){  //actualizeaza ce scriu in note
     setNotes(oldNotes => oldNotes.map(oldNote =>{
       return oldNote.id === currentNoteId
@@ -32,6 +34,23 @@ React.useEffect(()=>{
       :oldNote
     }))
   }
+*/
+
+  function updateNote(text){  //actualizeaza ce scriu in note
+    const rearrangedNotesArray=[]
+   setNotes(oldNotes=> {
+    for(var i=0; i<oldNotes.length;i++)
+      {
+        if(oldNotes[i].id === currentNoteId)
+          rearrangedNotesArray.unshift({...oldNotes[i],body:text})
+        else
+          rearrangedNotesArray.push(oldNotes[i])
+      }
+      return rearrangedNotesArray
+   })
+    
+  }
+
 
   function findCurrentNote(){
     return notes.find(note =>{
