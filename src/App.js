@@ -51,6 +51,11 @@ React.useEffect(()=>{
     
   }
 
+  function deleteNote(event,noteId){
+   event.stopPropagation()  // the trash element is a child of note element and this events stop propagation from child to the parent
+      setNotes(oldNotes => oldNotes.filter(note=> note.id !== noteId))
+  }
+
 
   function findCurrentNote(){
     return notes.find(note =>{
@@ -74,6 +79,7 @@ React.useEffect(()=>{
                 currentNote={findCurrentNote()}
                 setCurrentNoteId={setCurrentNoteId}
                 newNote={createNewNote}
+                deleteOneNote={deleteNote}
             />
             
             {currentNoteId &&
